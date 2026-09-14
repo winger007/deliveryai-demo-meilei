@@ -65,7 +65,7 @@ export default function App() {
   }
   const handleToggleElderly = () => {
     toggleElderly()
-    dispatch({ type: 'SET_MESSAGE', message: elderly ? '已切换为常规模式' : '已切换为老人模式' })
+    dispatch({ type: 'SET_MESSAGE', message: elderly ? t('common.elderly_mode_off') : t('common.elderly_mode_on') })
   }
 
   if (state.view === 'bind' || !state.table) {
