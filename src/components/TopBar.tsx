@@ -1,4 +1,4 @@
-import { Accessibility, Crown, Languages, LayoutDashboard, MapPin, PhoneCall, ReceiptText, Search, UserRound } from 'lucide-react'
+import { Crown, Glasses, Languages, LayoutDashboard, MapPin, PhoneCall, ReceiptText, Search, UserRound } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
@@ -56,8 +56,8 @@ export function TopBar({ table, view, serviceCount, language, elderly, onToggleL
             </DialogContent>
           </Dialog>
           <Button variant="outline" size="icon" onClick={onConsole} aria-label={t('common.aria_console')}><LayoutDashboard size={18} /></Button>
-          <Button variant="outline" size="icon" onClick={onToggleElderly} aria-label={elderly ? t('common.aria_elderly_off') : t('common.aria_elderly_on')}>
-            <Accessibility size={18} className={elderly ? 'text-chili-500' : ''} />
+          <Button variant="outline" size="icon" onClick={onToggleElderly} aria-label={elderly ? t('common.aria_elderly_off') : t('common.aria_elderly_on')} aria-pressed={elderly} title={elderly ? t('common.aria_elderly_off') : t('common.aria_elderly_on')}>
+            <Glasses size={20} aria-hidden="true" className={elderly ? 'text-chili-500' : ''} />
           </Button>
           <Button variant="outline" size="sm" onClick={onToggleLanguage} aria-label={t('common.aria_lang')}>
             <Languages size={16} />{language === 'zh' ? 'EN' : '中'}
