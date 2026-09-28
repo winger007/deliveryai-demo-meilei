@@ -1,4 +1,4 @@
-import { Accessibility, Crown, Languages, LayoutDashboard, MapPin, PhoneCall, ReceiptText, Search, UserRound } from 'lucide-react'
+import { Accessibility, Crown, Languages, LayoutDashboard, MapPin, Moon, PhoneCall, ReceiptText, Search, Sun, UserRound } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
@@ -11,14 +11,16 @@ interface TopBarProps {
   serviceCount: number
   language: string
   elderly: boolean
+  night: boolean
   onToggleLanguage: () => void
   onToggleElderly: () => void
+  onToggleNight: () => void
   onView: (view: ViewName) => void
   onService: () => void
   onConsole: () => void
 }
 
-export function TopBar({ table, view, serviceCount, language, elderly, onToggleLanguage, onToggleElderly, onView, onService, onConsole }: TopBarProps) {
+export function TopBar({ table, view, serviceCount, language, elderly, night, onToggleLanguage, onToggleElderly, onToggleNight, onView, onService, onConsole }: TopBarProps) {
   const { t } = useTranslation()
   const areaKey = tableAreas[table]
   const tableLabel = areaKey ? `${table} · ${t(areaKey)}` : table
@@ -58,6 +60,9 @@ export function TopBar({ table, view, serviceCount, language, elderly, onToggleL
           <Button variant="outline" size="icon" onClick={onConsole} aria-label={t('common.aria_console')}><LayoutDashboard size={18} /></Button>
           <Button variant="outline" size="icon" onClick={onToggleElderly} aria-label={elderly ? t('common.aria_elderly_off') : t('common.aria_elderly_on')}>
             <Accessibility size={18} className={elderly ? 'text-chili-500' : ''} />
+          </Button>
+          <Button variant="outline" size="icon" onClick={onToggleNight} aria-label={night ? t('common.aria_day') : t('common.aria_night')}>
+            {night ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} />}
           </Button>
           <Button variant="outline" size="sm" onClick={onToggleLanguage} aria-label={t('common.aria_lang')}>
             <Languages size={16} />{language === 'zh' ? 'EN' : '中'}

@@ -14,6 +14,7 @@ import { TopBar } from '@/components/TopBar'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useElderlyMode } from '@/hooks/useElderlyMode'
+import { useNightMode } from '@/hooks/useNightMode'
 import { orderReducer, initialState } from '@/state/orderReducer'
 import { products } from '@/data/menu'
 import { money } from '@/lib/utils'
@@ -37,6 +38,7 @@ export default function App() {
   const { t, i18n } = useTranslation()
   const [state, dispatch] = useReducer(orderReducer, initialState, createPreviewState)
   const { enabled: elderly, toggle: toggleElderly } = useElderlyMode()
+  const { enabled: night, toggle: toggleNight } = useNightMode()
   const [serviceOpen, setServiceOpen] = useState(false)
   const [consoleOpen, setConsoleOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
@@ -67,6 +69,10 @@ export default function App() {
     toggleElderly()
     dispatch({ type: 'SET_MESSAGE', message: elderly ? t('common.elderly_mode_off') : t('common.elderly_mode_on') })
   }
+  const handleToggleNight = () => {
+    toggleNight()
+    dispatch({ type: 'SET_MESSAGE', message: night ? t('message.night_off') : t('message.night_on') })
+  }
 
   if (state.view === 'bind' || !state.table) {
     return <BindTable onBind={(table) => dispatch({ type: 'BIND_TABLE', table })} />
@@ -84,8 +90,10 @@ export default function App() {
         serviceCount={waitingServices}
         language={i18n.language}
         elderly={elderly}
+        night={night}
         onToggleLanguage={toggleLanguage}
         onToggleElderly={handleToggleElderly}
+        onToggleNight={handleToggleNight}
         onView={changeView}
         onService={() => setServiceOpen(true)}
         onConsole={() => setConsoleOpen(true)}

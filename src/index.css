@@ -38,3 +38,82 @@ html * {
   }
   .scrollbar-none::-webkit-scrollbar { display: none; }
 }
+
+/* ===== 夜间模式 ===== */
+/* 在 <html> 上添加 .night 类激活夜间模式，覆盖全部页面和弹窗的配色 */
+
+/* 基础背景与文字 */
+.night { color: #f3e6d0; background: #1a1815; }
+.night body { background: #1a1815; }
+.night ::selection { background: rgba(240, 77, 58, 0.3); color: #fbf5ea; }
+
+/* --- 背景色覆盖 --- */
+
+/* 页面主背景（米色 → 深色） */
+.night .bg-rice-100 { background-color: #1a1815; }
+/* 结构性背景（header、弹窗） */
+.night .bg-rice-50 { background-color: #211f1c; }
+/* 内容卡片背景（白色 → 深灰） */
+.night .bg-white { background-color: #2a2825; }
+/* 次要背景（rice-200 → 中灰） */
+.night .bg-rice-200 { background-color: #34312d; }
+/* 浅品牌色背景 → 深品牌色底 */
+.night .bg-chili-50 { background-color: #2d1f1d; }
+/* 琥珀色浅底 → 深琥珀色底 */
+.night .bg-amber-100 { background-color: #3a342a; }
+/* 深色背景区域微调（保持深色但与页面区分） */
+.night .bg-charcoal-900 { background-color: #2a2825; }
+.night .bg-charcoal-700 { background-color: #34312d; }
+
+/* 品牌色提亮：chili-500 #e13b2b → #f04d3a */
+.night .bg-chili-500 { background-color: #f04d3a; }
+.night .bg-chili-600 { background-color: #d63d2c; }
+
+/* 半透明背景覆盖 */
+.night .bg-white\/80 { background-color: rgb(42 40 37 / 0.8); }
+.night .bg-white\/90 { background-color: rgb(42 40 37 / 0.9); }
+.night .bg-white\/95 { background-color: rgb(42 40 37 / 0.95); }
+.night .bg-rice-50\/95 { background-color: rgb(33 31 28 / 0.95); }
+.night .bg-rice-100\/95 { background-color: rgb(26 24 21 / 0.95); }
+.night .bg-rice-100\/70 { background-color: rgb(42 40 37 / 0.7); }
+.night .bg-amber-100\/70 { background-color: rgb(58 52 42 / 0.7); }
+.night .bg-white\/55 { background-color: rgb(26 24 21 / 0.6); }
+
+/* 成功色（绿色）适配深色背景 */
+.night .bg-emerald-50 { background-color: #1a2a20; }
+
+/* --- 文字色覆盖 --- */
+
+/* 深色文字 → 浅色文字 */
+.night .text-charcoal-900 { color: #f3e6d0; }
+.night .text-charcoal-700 { color: #d4c8b0; }
+.night .text-charcoal-500 { color: #a8a097; }
+
+/* 品牌色提亮 */
+.night .text-chili-500 { color: #f04d3a; }
+.night .text-chili-600 { color: #f04d3a; }
+
+/* 琥珀色提亮 */
+.night .text-amber-500 { color: #f5b83f; }
+
+/* 成功色提亮 */
+.night .text-emerald-600 { color: #34d399; }
+
+/* --- 边框色覆盖 --- */
+
+.night .border-charcoal-900\/5 { border-color: rgb(255 255 255 / 0.08); }
+.night .border-charcoal-900\/10 { border-color: rgb(255 255 255 / 0.12); }
+.night .border-charcoal-900\/15 { border-color: rgb(255 255 255 / 0.15); }
+
+/* --- 焦点环覆盖 --- */
+.night .ring-chili-50 { --tw-ring-color: rgb(240 77 58 / 0.2); }
+
+/* --- 噪点纹理适配深色背景 --- */
+.night .paper-noise {
+  background-image: radial-gradient(rgba(255, 230, 200, .04) .7px, transparent .7px);
+  background-size: 12px 12px;
+}
+
+/* --- 夜间模式与老人模式叠加：确保深色背景上高对比度 --- */
+.night.elderly .text-charcoal-500 { color: #c8c0b7; }
+.night.elderly .text-charcoal-700 { color: #e4d8c0; }
